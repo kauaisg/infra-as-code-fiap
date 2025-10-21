@@ -13,6 +13,7 @@ variable "environment_name" {
 variable "ami_id" {
   description = "AMI a ser usada nas instâncias"
   type        = string
+  default     = "ami-0360c520857e3138f"
 }
 
 # Tipo de instância
@@ -33,10 +34,17 @@ variable "ssh_access_cidr" {
 variable "vpc_id" {
   description = "ID da VPC existente onde os recursos serão criados"
   type        = string
+  default    = "vpc-09dabb72414674da8"
 }
 
 # ID da Subnet existente (não cria nova Subnet)
 variable "subnet_id" {
   description = "ID da Subnet existente dentro da VPC"
   type        = string
+  default     = "subnet-0e00ce0cb488df91f"
 }
+
+variable "labRole" {
+  default = "arn:aws:iam::896497467373:role/LabRole"
+}
+

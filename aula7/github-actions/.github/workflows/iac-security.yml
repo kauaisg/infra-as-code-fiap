@@ -1,0 +1,19 @@
+name: IaC Security Scan
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  checkov:
+    name: Checkov (Terraform IaC)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Checkov
+        uses: bridgecrewio/checkov-action@v12
+        with:
+          directory: ./
+          soft_fail: false  # falha o job se encontrar problemas
