@@ -5,10 +5,8 @@ Este pacote reúne **exemplos práticos** para consolidar os temas da Aula 7:
 - Auditoria de execuções (integração com pipelines);
 - Segurança aplicada a IaC (scanners, segredos, políticas).
 
+modificando readme
 
- adiconar um conflito
-
- 
 ## Conteúdo
 
 - `insecure-terraform/`
