@@ -27,7 +27,7 @@ variable "instance_type" {
 variable "ssh_access_cidr" {
   description = "CIDR permitido para acesso SSH"
   type        = string
-  default     = "0.0.0.0/0"
+  default     = "10.0.0.0/8"
 }
 
 # ID da VPC existente (não cria nova VPC)
@@ -46,5 +46,17 @@ variable "subnet_id" {
 
 variable "labRole" {
   default = "arn:aws:iam::896497467373:role/LabRole"
+}
+
+variable "aws_region" {
+  description = "Região AWS de execução"
+  type        = string
+  default     = "us-east-1"
+}
+
+variable "aws_profile" {
+  description = "Perfil AWS CLI para contas pessoais (deixe vazio no AWS Academy)"
+  type        = string
+  default     = ""
 }
 

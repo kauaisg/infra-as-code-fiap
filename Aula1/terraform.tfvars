@@ -12,7 +12,11 @@ ami_id           = "ami-0360c520857e3138f"
 instance_type    = "t2.micro"
 
 # Liberação de acesso SSH (por segurança, ajuste para seu IP)
-ssh_access_cidr  = "0.0.0.0/0"
+ssh_access_cidr  = "10.0.0.0/8"
+
+# Trilha full-aws: defina um profile; trilha academy: mantenha vazio
+aws_profile = ""
+aws_region  = "us-east-1"
 
 # IDs da VPC e Subnet existentes (substitua pelos seus)
 vpc_id    = "vpc-09dabb72414674da8"
