@@ -13,6 +13,15 @@ Este projeto demonstra como integrar **Terraform** a pipelines de **CI/CD com Gi
 
 ## Como usar
 
+### Trilhas de credenciais
+- **AWS Academy**: exporte `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN` e `AWS_REGION`.
+- **Conta AWS pessoal**: exporte `AWS_PROFILE` e `AWS_REGION`.
+
+Valide credenciais:
+```bash
+aws sts get-caller-identity
+```
+
 1. Inicialize o Terraform:
 ```bash
 terraform init
@@ -31,6 +40,6 @@ terraform apply -var-file="prod.tfvars"
 ```
 
 ## GitHub Actions
-- Push na branch `develop` → aplica em dev
-- Push na branch `main` → aplica em prod (com aprovação manual)
-- Workflow `rollback.yml` → permite restaurar para uma versão anterior usando tags
+- Push/PR nas branches `develop` e `main` → executa `fmt`, `validate`, `tflint` e `checkov`
+- Push em `develop` e `main` também gera `plan` do ambiente correspondente
+- Workflow `rollback.yml` roda `plan` de rollback a partir da tag informada

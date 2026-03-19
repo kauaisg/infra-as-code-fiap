@@ -11,18 +11,19 @@ on:
 jobs:
   rollback:
     runs-on: ubuntu-latest
+    environment: production
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.version }}
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
+        uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
         run: terraform init
 
-      - name: Terraform Apply Rollback
-        run: terraform apply -auto-approve -var-file="prod.tfvars"
+      - name: Terraform Plan Rollback
+        run: terraform plan -input=false -var-file="prod.tfvars"

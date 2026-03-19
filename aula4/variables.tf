@@ -33,3 +33,9 @@ variable "is_production" {
   type        = bool
   default     = false
 }
+
+variable "allowed_ssh_cidr" {
+  description = "CIDR permitido para SSH (evite 0.0.0.0/0 fora de laboratórios controlados)"
+  type        = string
+  default     = "10.0.0.0/8"
+}
