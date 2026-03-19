@@ -16,6 +16,15 @@ Este projeto demonstra o uso de:
 
 ## Como usar
 
+### Trilhas de credenciais
+- **AWS Academy**: exporte `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN` e `AWS_REGION`.
+- **Conta AWS pessoal**: exporte `AWS_PROFILE` e `AWS_REGION`.
+
+Valide a sessão antes de iniciar:
+```bash
+aws sts get-caller-identity
+```
+
 1. Inicialize o projeto:
 ```bash
 terraform init
