@@ -16,6 +16,20 @@ Este projeto demonstra o uso de variáveis de diferentes tipos, outputs, state e
 - Conta AWS com permissões para criar VPC, Subnet e EC2.
 - Terraform ou OpenTofu instalado.
 
+## Trilhas de credenciais
+
+### AWS Academy
+- Exporte `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN` e `AWS_REGION`.
+
+### Conta AWS pessoal
+- Exporte `AWS_PROFILE` e `AWS_REGION` (ou use SSO com profile ativo).
+
+Antes de executar Terraform:
+
+```bash
+aws sts get-caller-identity
+```
+
 ## Passo a Passo
 
 1. Inicializar o projeto:
