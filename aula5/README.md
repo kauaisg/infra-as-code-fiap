@@ -13,6 +13,15 @@ Projeto didático e **funcional** que cria:
 - Terraform ou OpenTofu;
 - Terragrunt.
 
+## Trilhas de credenciais
+- **AWS Academy**: exporte `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN` e `AWS_REGION`.
+- **Conta AWS pessoal**: exporte `AWS_PROFILE` e `AWS_REGION`.
+
+Valide antes de aplicar:
+```bash
+aws sts get-caller-identity
+```
+
 ## Passos resumidos
 1) Faça o **bootstrap** do state (S3/DynamoDB) em `bootstrap/`.
 2) Atualize `live/terragrunt.hcl` com os nomes retornados.
