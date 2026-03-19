@@ -5,8 +5,6 @@ Este pacote reúne **exemplos práticos** para consolidar os temas da Aula 7:
 - Auditoria de execuções (integração com pipelines);
 - Segurança aplicada a IaC (scanners, segredos, políticas).
 
-modificando readme
-
 ## Conteúdo
 
 - `insecure-terraform/`
@@ -21,6 +19,10 @@ modificando readme
 - Terraform >= 1.3 (apenas se quiser fazer `init/plan`; os scanners não exigem credenciais).
 - **tfsec** e/ou **Checkov** instalados localmente (ou via Docker).
 - **OPA** (Open Policy Agent) opcional para testar a política Rego.
+
+## Trilhas AWS (opcional)
+- **AWS Academy**: exporte `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN` e `AWS_REGION`.
+- **Conta AWS pessoal**: exporte `AWS_PROFILE` e `AWS_REGION`.
 
 ## Como começar rapidamente
 
