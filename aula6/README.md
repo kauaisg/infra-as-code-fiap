@@ -23,6 +23,16 @@ Este projeto demonstra como usar o Terraform para gerenciar recursos dentro de u
 - Terraform >= 1.3 instalado.
 - Para Helm: acesso à internet para baixar charts.
 
+## Trilhas AWS (quando usar EKS)
+
+- **AWS Academy**: exporte `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN` e `AWS_REGION`.
+- **Conta AWS pessoal**: exporte `AWS_PROFILE` e `AWS_REGION`.
+
+Valide credenciais se estiver usando cluster EKS:
+```bash
+aws sts get-caller-identity
+```
+
 ---
 
 ## ▶️ Passo a passo
@@ -34,6 +44,11 @@ Entre no diretório `kubernetes_hcl/` e execute:
 terraform init
 terraform plan
 terraform apply
+```
+
+Se necessário, forneça a senha do secret por variável:
+```bash
+export TF_VAR_db_password="troque-esta-senha"
 ```
 
 Este exemplo cria:

@@ -4,7 +4,7 @@
 resource "kubernetes_role" "read_pods" {
   metadata {
     name      = "read-pods"
-    namespace = kubernetes_namespace.demo.metadata[0].name
+    namespace = kubernetes_namespace.ns.metadata[0].name
   }
 
   rule {
@@ -18,7 +18,7 @@ resource "kubernetes_role" "read_pods" {
 resource "kubernetes_role_binding" "read_pods_binding" {
   metadata {
     name      = "read-pods-binding"
-    namespace = kubernetes_namespace.demo.metadata[0].name
+    namespace = kubernetes_namespace.ns.metadata[0].name
   }
 
   role_ref {

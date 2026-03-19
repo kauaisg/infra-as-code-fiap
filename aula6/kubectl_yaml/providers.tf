@@ -1,9 +1,10 @@
 # kubectl_yaml/providers.tf
 terraform {
+  required_version = ">= 1.4.0"
   required_providers {
     kubectl = {
-      source  = "gavinbunney/kubectl"
-      version = "~> 1.14"
+      source  = "alekc/kubectl"
+      version = ">= 2.0.0"
     }
   }
 }
