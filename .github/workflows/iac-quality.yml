@@ -1,0 +1,64 @@
+name: IaC Quality Gates
+
+on:
+  pull_request:
+    branches: ["main", "develop"]
+  push:
+    branches: ["main", "develop"]
+  workflow_dispatch:
+
+jobs:
+  terraform-quality:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        directory:
+          - Aula1
+          - aula2
+          - aula3
+          - aula4
+          - aula6/kubernetes_hcl
+          - aula6/kubectl_yaml
+          - aula8/backend
+          - aula8/modules/ec2
+          - aula8/modules/eks
+          - aula8/modules/rds
+          - aula8/modules/root
+          - aula8/modules/s3
+          - aula8/modules/vpc
+
+    defaults:
+      run:
+        working-directory: ${{ matrix.directory }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Fmt
+        run: terraform fmt -check -recursive
+
+      - name: Terraform Validate
+        run: terraform init -backend=false && terraform validate
+
+  static-security:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v1
+
+      - name: Run TFLint
+        run: tflint --recursive
+
+      - name: Checkov Scan
+        uses: bridgecrewio/checkov-action@v12
+        with:
+          directory: .
+          soft_fail: false
