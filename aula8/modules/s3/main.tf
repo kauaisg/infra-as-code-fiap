@@ -1,14 +1,23 @@
 resource "aws_s3_bucket" "storage" {
   bucket        = "${var.env}-app-storage"
   force_destroy = true
+  tags = { Name = "${var.env}-app-storage" }
+}
 
-  versioning { enabled = true }
+resource "aws_s3_bucket_versioning" "storage" {
+  bucket = aws_s3_bucket.storage.id
 
-  server_side_encryption_configuration {
-    rule {
-      apply_server_side_encryption_by_default { sse_algorithm = "AES256" }
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "storage" {
+  bucket = aws_s3_bucket.storage.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
     }
   }
-
-  tags = { Name = "${var.env}-app-storage" }
 }

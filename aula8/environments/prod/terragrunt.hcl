@@ -18,7 +18,7 @@ inputs = {
 
   # RDS
   db_user = "admin"
-  db_pass = "Admin1234!"
+  db_pass = get_env("TF_VAR_db_pass", "")
 
   # EKS opcional
   enable_eks      = true

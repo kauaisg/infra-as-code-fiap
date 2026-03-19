@@ -2,7 +2,7 @@
 resource "aws_security_group" "app_sg" {
   name        = "${var.env}-app-sg"
   description = "SG da aplicação"
-  vpc_id      = data.aws_vpc.selected.id
+  vpc_id      = data.aws_subnet.selected.vpc_id
 
   egress {
     from_port   = 0
@@ -14,7 +14,11 @@ resource "aws_security_group" "app_sg" {
 }
 
 data "aws_vpc" "selected" {
-  id = split("/", var.subnet_id)[2] != "" ? "" : null # placeholder (não usado)
+  id = data.aws_subnet.selected.vpc_id
+}
+
+data "aws_subnet" "selected" {
+  id = var.subnet_id
 }
 
 resource "aws_instance" "app" {
